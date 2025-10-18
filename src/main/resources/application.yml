@@ -28,3 +28,11 @@ spring:
     show-sql: true
   application:
     name: CineMille
+#==========================================================
+#= Logging
+#==========================================================
+#logging:
+# level:
+#   org:
+#    springframework:
+#     security: DEBUG
