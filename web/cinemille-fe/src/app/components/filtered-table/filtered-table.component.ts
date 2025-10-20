@@ -9,7 +9,7 @@ import { Page } from '../../models/page';
   templateUrl: './filtered-table.component.html',
   styleUrl: './filtered-table.component.scss',
 })
-export class FilteredTableComponent implements OnInit, AfterViewInit {
+export class FilteredTableComponent implements AfterViewInit {
 
   @Input() set setTable(page: Page<any>) {
 
@@ -21,18 +21,14 @@ export class FilteredTableComponent implements OnInit, AfterViewInit {
   }
 
   @Input() columnToExclude: string[] = []
+  @Input() defaultPageSize = 10;
 
   page: Page<any> = new Page;
   pageSizeOptions: number[] = [5, 10, 20];
-  defaultPageSize = 10;
   columns: string[] = [];
   dataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  ngOnInit(): void {
-    //this.setTable(this.page);
-  }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;

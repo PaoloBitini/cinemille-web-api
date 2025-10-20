@@ -1,3 +1,83 @@
-@if(data){
-<cm-filtered-table [columnToExclude]="columnToExclude" [setTable]="data"></cm-filtered-table>
-}
+<mat-drawer-container class="h-100">
+    <mat-drawer [opened]="filterOpened" mode="over" position="end" [scrollLeft]="">
+        <div class="container p-0">
+            <form [formGroup]="form" class="row m-0 mt-4">
+                <!-- UUID -->
+                <mat-form-field appearance="fill" class="col-11">
+                    <mat-label>Uuid</mat-label>
+                    <input matInput type="text" formControlName="uuid" />
+                </mat-form-field>
+
+                <!-- Titolo -->
+                <mat-form-field appearance="fill" class="col-11">
+                    <mat-label>Titolo</mat-label>
+                    <input matInput type="text" formControlName="titolo" />
+                </mat-form-field>
+
+                <!-- Regista -->
+                <mat-form-field appearance="fill" class="col-11">
+                    <mat-label>Regista</mat-label>
+                    <input matInput type="text" formControlName="regista" />
+                </mat-form-field>
+
+                <!-- Genere -->
+                <mat-form-field appearance="fill" class="col-11">
+                    <mat-label>Genere</mat-label>
+                    <input matInput type="text" formControlName="genere" />
+                </mat-form-field>
+
+                <!-- Da A Data Uscita -->
+                <mat-form-field class="col-11">
+                    <mat-label>Data Uscita</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                        <input matStartDate placeholder="Da" formControlName="daDataUscita">
+                        <input matEndDate placeholder="A" formControlName="aDataUscita">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+
+                <!-- Da A Data Fine Permanenza -->
+                <mat-form-field class="col-11">
+                    <mat-label>Data Fine Permanenza</mat-label>
+                    <mat-date-range-input [rangePicker]="picker2">
+                        <input matStartDate placeholder="Da" formControlName="daDataFinePermanenza">
+                        <input matEndDate placeholder="A" formControlName="aDataFinePermanenza">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker2></mat-date-range-picker>
+                </mat-form-field>
+
+                <div class="col-3"></div>
+                <button class="col-5" matButton="outlined" type="submit">
+                    <mat-icon>
+                        search
+                    </mat-icon>
+                    Cerca
+                </button>
+            </form>
+        </div>
+    </mat-drawer>
+
+    <mat-drawer-content class="container-fluid h-100">
+        <div class="row flex-column h-100">
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col-2">
+                    <button matButton="filled" class="filter-button" (click)="filterOpened=!filterOpened">
+                        <mat-icon>
+                            filter
+                        </mat-icon>
+                        Filtri
+                    </button>
+                </div>
+            </div>
+            <div class="flex-1 d-flex flex-column">
+                @if(data){
+                <cm-filtered-table [columnToExclude]="columnToExclude" [setTable]="data"></cm-filtered-table>
+                }
+            </div>
+        </div>
+    </mat-drawer-content>
+
+</mat-drawer-container>

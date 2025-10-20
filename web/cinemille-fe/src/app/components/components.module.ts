@@ -1,33 +1,30 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatIconModule } from '@angular/material/icon'
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { FiltriComponent } from './filtri/filtri.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { FilteredTableComponent } from './filtered-table/filtered-table.component';
+import { MaterialModule } from '../material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ToolbarComponent,
-    FiltriComponent,
+    FilteredTableComponent,
     SidenavComponent,
   ],
   imports: [
     CommonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     ToolbarComponent,
+    FilteredTableComponent,
     SidenavComponent,
-    MatListModule,
-    MatIconModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ComponentsModule { }
