@@ -1,3 +1,25 @@
-<main>
-
-</main>
+<cm-sidenav [isOpen]="isSidenavOpen">
+  <div ngProjectAs="sidenav">
+    <mat-nav-list class="list">
+      <a mat-list-item routerLink="/films">
+        <mat-icon matListItemIcon>movie</mat-icon>
+        <div matListItemTitle>Film</div>
+      </a>
+      <a mat-list-item routerLink="/programmazioni">
+        <mat-icon matListItemIcon>event</mat-icon>
+        <div matListItemTitle>Programmazioni</div>
+      </a>
+      <a mat-list-item routerLink="/sale">
+        <mat-icon matListItemIcon>door_sliding</mat-icon>
+        <div matListItemTitle>Sale</div>
+      </a>
+    </mat-nav-list>
+  </div>
+  <div ngProjectAs="sidenav-content">
+    <main class="h-100v d-flex flex-column">
+      <cm-toolbar [title]="title" (menuButtonClicked)="handleSidenav()">
+      </cm-toolbar>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</cm-sidenav>
