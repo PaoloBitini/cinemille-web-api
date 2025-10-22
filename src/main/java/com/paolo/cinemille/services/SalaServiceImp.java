@@ -28,11 +28,13 @@ public class SalaServiceImp implements SalaService{
 		return source.map((f)->ConvertToDto(f));
 	}
 	
+	//Metodi del servizio inutilizzati, li lascio solo per "formalità"
 	@Override
 	public Sala GetSalaFromUUID(UUID uuid) {
 		return this.salaRepository.findByUuid(uuid);
 	}
 	
+	//Conversione in dto con modelmapper
 	private SalaDto ConvertToDto(Sala source) {
 		return this.modelMapper.map(source, SalaDto.class);
 	}

@@ -20,6 +20,12 @@ public class Sala {
 
 	// Id e uuid vengono generati dal db
 	
+	/* 
+	 * annotazione @Column e @Table non necessarie in questo caso,
+	 * ritengo che sia comunque buona prassi specificarle nel aso fosse necessario refactoring 
+	 * dei campi o cambio collonne/tabelle del db
+	 */
+	
 	@Id
 	@SequenceGenerator(initialValue = 1, sequenceName = "sale_id_seq", name = "sale_gen", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sale_gen" )
