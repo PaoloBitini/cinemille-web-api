@@ -11,6 +11,7 @@ import com.paolo.cinemille.entities.Sala;
 
 @Repository
 public interface SalaRepository extends JpaRepository<Sala, Integer>{
+	
 	public Page<Sala> findAll(Pageable p);
 
 	public Sala findByUuid(UUID uuid);

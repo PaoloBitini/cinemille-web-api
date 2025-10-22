@@ -18,6 +18,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Sala {
 
+	// Id e uuid vengono generati dal db
+	
 	@Id
 	@SequenceGenerator(initialValue = 1, sequenceName = "sale_id_seq", name = "sale_gen", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sale_gen" )

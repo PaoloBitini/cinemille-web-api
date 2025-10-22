@@ -6,7 +6,9 @@ import java.util.Date;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -14,9 +16,11 @@ import org.springframework.stereotype.Repository;
 import com.paolo.cinemille.entities.Programmazione;
 
 @Repository
-public interface ProgrammazioneRepository extends JpaRepository<Programmazione, Integer>{
+public interface ProgrammazioneRepository extends JpaRepository<Programmazione, Integer>, JpaSpecificationExecutor<Programmazione>{
 
 	public Page<Programmazione> findAll(Pageable p);
+	
+	public Page<Programmazione> findAll(Specification<Programmazione> s, Pageable p);
 	
 	@Query("SELECT p FROM Programmazione p JOIN p.film f WHERE f.titolo LIKE (:name)")
 	public Page<Programmazione> findByFilmTitolo(@Param("name") String name, Pageable p);

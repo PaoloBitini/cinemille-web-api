@@ -13,6 +13,11 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import lombok.SneakyThrows;
 
+/*
+ * E' stato scelto di utilizzare Spring Security per predisporre l'applicativo 
+ * per un possibile sistema di autenticazione futuro e per questioni formative 
+ */
+
 @Configuration
 public class SecurityConfig {
 	
@@ -21,7 +26,12 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) {
 		
 
-		//nel caso di questa API REST si puo disabilitare la protezione csfr
+		/*
+		 * nel caso di questa API REST è stato scelto di disabilitare la
+		 * sicurezza CROSS-SITE-REQUEST-FORGE (da abilitare in caso di implementazione di sistema di autenticazione).
+		 * In questa api tutti gli endpoint sono pubblici
+		 */
+		
         http
         .cors(c -> c.configurationSource(corsConfigurationSource()))
         .csrf(csrf -> csrf.disable())
@@ -35,7 +45,11 @@ public class SecurityConfig {
 		return http.build();
 	}
 	
-	//configurazione cors. sono ammesse solo richieste GET da localhost:4200
+	/*
+	 * Configurazione CORS (CROSS-ORIGIN RESOUCE SHARING):
+	 * sono ammesse solo richieste GET la cui origine è localhost:4200
+	 */
+	
 	private CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration cors = new CorsConfiguration();
 		

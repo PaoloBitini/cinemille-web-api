@@ -24,6 +24,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Programmazione {
 
+	// Id e uuid vengono generati dal db
+	
+	/* 
+	 * annotazione @Column e @Table non necessarie in questo caso,
+	 * ritengo che sia comunque buona prassi specificarle nel aso fosse necessario refactoring 
+	 * dei campi o cambio collonne/tabelle del db
+	 */
+	
 	@Id
 	@SequenceGenerator(initialValue = 1, sequenceName = "programmazioni_id_seq", name = "programmazione_gen", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "programmazione_gen" )

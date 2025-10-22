@@ -4,6 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
+/*
+ * Configurazione del ModelMapper
+ */
+
 @Configuration
 public class ModelMapperConfig 
 {

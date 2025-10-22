@@ -6,10 +6,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.paolo.cinemille.dtos.ProgrammazioneDto;
+import com.paolo.cinemille.dtos.ProgrammazioniFiltersDto;
 
 public interface ProgrammazioneService {
 	
 	public Page<ProgrammazioneDto> GetProgrammazioniPaginated(Pageable p);
+	
+	public Page<ProgrammazioneDto> GetProgrammazioniFilteredAndPaginated(ProgrammazioniFiltersDto filters ,Pageable p);
 	
 	public Page<ProgrammazioneDto> GetProgrammazioniByFilmTitoloPaginated(String title, Pageable p);
 	

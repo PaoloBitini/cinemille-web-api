@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.paolo.cinemille.dtos.FilmDto;
+import com.paolo.cinemille.dtos.FilmFiltersDto;
 import com.paolo.cinemille.entities.Film;
 
 public interface FilmService {
@@ -14,6 +15,8 @@ public interface FilmService {
 	public Film GetFilmFromUUID(UUID uuid); 
 	
 	public Page<FilmDto> GetFilmsPaginated(Pageable p);
+	
+	public Page<FilmDto> GetFilmsFilteredAndPaginated(FilmFiltersDto filters, Pageable p);
 	
 	public Page<FilmDto> GetFilmsByTitlePaginated(String title, Pageable p);
 	

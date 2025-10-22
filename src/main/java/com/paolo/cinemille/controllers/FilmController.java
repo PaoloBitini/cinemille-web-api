@@ -5,10 +5,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.paolo.cinemille.dtos.FilmDto;
+import com.paolo.cinemille.dtos.FilmFiltersDto;
 import com.paolo.cinemille.services.FilmService;
 
 @RestController
@@ -21,10 +23,16 @@ public class FilmController {
 		this.filmService = filmService;
 	}
 	
-	
 	@GetMapping
-	public Page<FilmDto> getFilms(@PageableDefault(page = 0, direction = Direction.DESC, size = 20) Pageable pageable) {
+	public Page<FilmDto> getFilms(@PageableDefault(page = 0, direction = Direction.DESC, size = 20) Pageable pageable) {	
+		
 		return filmService.GetFilmsPaginated(pageable);
+	}
+	
+	@GetMapping("/filtered")
+	public Page<FilmDto> getFilms(@PageableDefault(page = 0, direction = Direction.DESC, size = 20) Pageable pageable, @ModelAttribute FilmFiltersDto filters) {
+		
+		return filmService.GetFilmsFilteredAndPaginated(filters, pageable);
 	}
 	
 }

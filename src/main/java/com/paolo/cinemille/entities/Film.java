@@ -21,6 +21,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Film {
 
+	// Id e uuid vengono generati dal db
+	
+	/* 
+	 * annotazione @Column e @Table non necessarie in questo caso,
+	 * ritengo che sia comunque buona prassi specificarle nel aso fosse necessario refactoring 
+	 * dei campi o cambio collonne/tabelle del db
+	 */
+	
 	@Id
 	@SequenceGenerator(initialValue = 1, sequenceName = "film_id_seq", name = "film_gen", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "film_gen" )

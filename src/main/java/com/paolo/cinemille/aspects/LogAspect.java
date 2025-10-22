@@ -7,6 +7,10 @@ import org.aspectj.lang.annotation.Pointcut;
 
 import lombok.extern.java.Log;
 
+/*
+ *  Classe Aspect usata per il log generico di entrata e uscita per i controller e servizi
+ */
+
 @Log
 @Aspect
 public class LogAspect {
