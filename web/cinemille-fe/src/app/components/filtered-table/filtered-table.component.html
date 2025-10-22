@@ -1,18 +1,33 @@
-<div class="mat-elevation-z8 d-flex flex-column full-width-flex d-flex flex-column">
-    <table mat-table [dataSource]="dataSource" class="full-width-flex">
+<div class="table-container">
+
+    @if(page.content.length > 0){
+
+    <table mat-table [dataSource]="dataSource">
 
         @for(column of columns ; track column){
         <ng-container [matColumnDef]="column">
             <th mat-header-cell *matHeaderCellDef>{{ column | titlecase}}</th>
-            <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+            <td mat-cell *matCellDef="let element">{{ isDate(element[column]) ? (element[column] | date: 'dd/MM/yyyy') :
+                (element[column])}}</td>
         </ng-container>
         }
 
-        <tr mat-header-row *matHeaderRowDef="columns"></tr>
-        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+        <tbody mat-table-body>
+            <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        </tbody>
     </table>
 
-    <mat-paginator [length]="page.totalElements" [pageSizeOptions]="pageSizeOptions" [pageSize]="defaultPageSize"
-        showFirstLastButtons>
-    </mat-paginator>
+    }@else{
+
+    <div class="row p-0 m-0">
+        <div class="col-4 offset-4 no-data-row">Spiacente, nessun dato presente</div>
+    </div>
+
+    }
 </div>
+@if(page.totalPages > 1){
+<mat-paginator [length]="page.totalElements" [pageSize]="paging.size" [pageIndex]="paging.page"
+    [pageSizeOptions]="pageSizeOptions" (page)="pagingChanged($event)" showFirstLastButtons>
+</mat-paginator>
+}

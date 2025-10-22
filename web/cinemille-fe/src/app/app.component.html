@@ -16,8 +16,11 @@
     </mat-nav-list>
   </div>
   <div ngProjectAs="sidenav-content">
-    <main class="h-100v d-flex flex-column">
-      <cm-toolbar [title]="title" (menuButtonClicked)="handleSidenav()">
+    <main class="ms-4 me-4">
+      <cm-toolbar [title]="title">
+        <button mat-icon-button (click)="handleSidenav()">
+          <mat-icon>menu</mat-icon>
+        </button>
       </cm-toolbar>
       <router-outlet></router-outlet>
     </main>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'cm-toolbar',
@@ -7,12 +7,5 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent {
-
   @Input() title: string = "";
-
-  @Output() menuButtonClicked: EventEmitter<void> = new EventEmitter<void>();
-
-  emitEvent() {
-    this.menuButtonClicked.emit();
-  }
 }

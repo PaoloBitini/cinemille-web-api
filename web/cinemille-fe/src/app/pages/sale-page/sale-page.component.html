@@ -1,3 +1,8 @@
-@if(data){
-<cm-filtered-table [columnToExclude]="columnToExclude" [setTable]="data" [defaultPageSize]="20"></cm-filtered-table>
-}
+<cm-toolbar>
+</cm-toolbar>
+<div>
+    @if(data){
+    <cm-filtered-table [columnToExclude]="columnToExclude" [data]="data"
+        (paginationChanged)="loadDataNewPagination($event)"></cm-filtered-table>
+    }
+</div>

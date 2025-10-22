@@ -5,6 +5,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { FilteredTableComponent } from './filtered-table/filtered-table.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CdkTableModule } from "@angular/cdk/table";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-  ],
+    CdkTableModule
+],
   exports: [
     ToolbarComponent,
     FilteredTableComponent,
