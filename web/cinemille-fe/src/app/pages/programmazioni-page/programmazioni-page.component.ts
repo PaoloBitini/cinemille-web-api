@@ -25,7 +25,7 @@ export class ProgrammazioniPageComponent implements OnInit, OnDestroy {
   sub: Subscription | null = null;
 
   data: any;
-  columnToExclude: string[] = ["uuidFilm", "uuidSala"];
+  columnToExclude: string[] = ["uuidFilm", "uuidSala", "uuid"];
 
   filters: ProgrammazioniFilters = defaultProgramamzioniFilters();
   paging: PageRequest = defaultPageRequest();
