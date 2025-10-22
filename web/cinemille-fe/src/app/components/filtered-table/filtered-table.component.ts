@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { Page } from '../../models/page';
 import { PageRequest } from '../../models/pageRequest';
 
@@ -23,9 +23,6 @@ export class FilteredTableComponent {
     }
   }
   @Output() paginationChanged: EventEmitter<PageRequest> = new EventEmitter<PageRequest>();
-
-
-  @ViewChild(MatTable) table!: MatTable<any>;
 
   page: Page<any> = new Page;
   dataSource = new MatTableDataSource<any>([]);
