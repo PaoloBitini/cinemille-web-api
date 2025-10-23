@@ -1,4 +1,5 @@
 <mat-toolbar>
-    <ng-content></ng-content>
+    <ng-content select="toolbar-menu"></ng-content>
     <span>{{title}}</span>
+    <ng-content select="toolbar-buttons"></ng-content>
 </mat-toolbar>

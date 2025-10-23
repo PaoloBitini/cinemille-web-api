@@ -4,6 +4,11 @@ import { ProgrammazioniPageComponent } from './pages/programmazioni-page/program
 import { SalePageComponent } from './pages/sale-page/sale-page.component';
 export const routes: Routes = [
     {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'films'
+    },
+    {
         path: 'films',
         component: FilmPageComponent,
         title: 'Films',

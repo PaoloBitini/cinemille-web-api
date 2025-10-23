@@ -1,8 +1,6 @@
-<cm-toolbar>
+<cm-toolbar title="Sale Disponibili">
 </cm-toolbar>
 <div>
-    @if(data){
     <cm-filtered-table [columnToExclude]="columnToExclude" [data]="data"
         (paginationChanged)="loadDataNewPagination($event)"></cm-filtered-table>
-    }
 </div>

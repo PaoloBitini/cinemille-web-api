@@ -1,6 +1,6 @@
 <div class="table-container">
 
-    @if(page.content.length > 0){
+    @if(page && page.content.length > 0){
 
     <table mat-table [dataSource]="dataSource">
 
@@ -21,12 +21,12 @@
     }@else{
 
     <div class="row p-0 m-0">
-        <div class="col-4 offset-4 no-data-row">Spiacente, nessun dato presente</div>
+        <div class="mt-5 col-4 offset-4 no-data-row">Spiacente, nessun dato presente</div>
     </div>
 
     }
 </div>
-@if(page.totalPages > 1){
+@if(page && page.totalPages > 1){
 <mat-paginator [length]="page.totalElements" [pageSize]="paging.size" [pageIndex]="paging.page"
     [pageSizeOptions]="pageSizeOptions" (page)="pagingChanged($event)" showFirstLastButtons>
 </mat-paginator>

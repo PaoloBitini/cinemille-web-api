@@ -69,18 +69,25 @@
 
     <!--**************** TABELLA E BOTTONE FILTRO *****************-->
     <mat-drawer-content>
-        <cm-toolbar>
-            <button matButton="filled" class="filter-button" (click)="filterOpened=!filterOpened">
-                <mat-icon>
-                    filter
-                </mat-icon>
-                Filtri
-            </button>
+        <cm-toolbar [title]="'Film Disponibili'">
+            <div class="ms-4 row" ngProjectAs="toolbar-buttons">
+                <button matButton="filled" class="col-5 button" (click)="loadData()">
+                    <mat-icon>
+                        search
+                    </mat-icon>
+                    Cerca
+                </button>
+                <button matButton="outlined" class="col-5 ms-2 button" (click)="filterOpened=!filterOpened">
+                    <mat-icon>
+                        filter
+                    </mat-icon>
+                    Filtri
+                </button>
+            </div>
         </cm-toolbar>
-        @if(data){
+
         <cm-filtered-table [columnToExclude]="columnToExclude" [data]="data"
             (paginationChanged)="onPaginationChange($event)"></cm-filtered-table>
-        }
     </mat-drawer-content>
 
 </mat-drawer-container>
