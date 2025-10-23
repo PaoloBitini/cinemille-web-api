@@ -63,13 +63,13 @@
     <mat-drawer-content>
         <cm-toolbar title="Storico e Programmazioni">
             <div class="ms-4 row" ngProjectAs="toolbar-buttons">
-                <button matButton="filled" class="col-5 button" (click)="loadData()">
+                <button matButton="filled" class="col-5 button" (click)="loadAllData()">
                     <mat-icon>
                         search
                     </mat-icon>
-                    Cerca
+                    Tutti
                 </button>
-                <button matButton="outlined" class="col-5 ms-2 button" (click)="filterOpened=!filterOpened">
+                <button matButton="outlined" class="col-5 ms-3 button" (click)="filterOpened=!filterOpened">
                     <mat-icon>
                         filter
                     </mat-icon>

@@ -65,13 +65,17 @@ export class ProgrammazioniPageComponent implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
+  loadAllData() {
+    this.progService.getProgrammazioniPaginated(this.paging).subscribe({
+      next: (el: Page<Programmazione>) => {
+        this.data = el;
+      }
+    });
+  }
+
   loadData() {
     if (isEmptyProgrammazioniFilter(this.filters)) {
-      this.progService.getProgrammazioniPaginated(this.paging).subscribe({
-        next: (el: Page<Programmazione>) => {
-          this.data = el;
-        }
-      })
+      this.loadAllData();
     } else {
       this.progService.getProgrammazioniFilteredAndPaginated(this.paging, this.filters).subscribe({
         next: (el: Page<Programmazione>) => {

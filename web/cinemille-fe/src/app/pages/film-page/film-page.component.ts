@@ -83,13 +83,17 @@ export class FilmPageComponent implements OnInit, OnDestroy {
     this.loadData();
   }
 
+  loadAllData() {
+    this.filmService.getFilmsPaginated(this.paging).subscribe({
+      next: (el: Page<Film>) => {
+        this.data = el;
+      }
+    })
+  }
+
   loadData() {
     if (isEmptyFilmFilter(this.filters)) {
-      this.filmService.getFilmsPaginated(this.paging).subscribe({
-        next: (el: Page<Film>) => {
-          this.data = el;
-        }
-      })
+      this.loadAllData()
     } else {
       this.filmService.getFilmsFilteredAndPaginated(this.paging, this.filters).subscribe({
         next: (el: Page<Film>) => {
