@@ -86,8 +86,8 @@
             </div>
         </cm-toolbar>
 
-        <cm-filtered-table [columnToExclude]="columnToExclude" [data]="data"
-            (paginationChanged)="onPaginationChange($event)"></cm-filtered-table>
+        <cm-table [columnToExclude]="columnToExclude" [data]="data"
+            (paginationChanged)="onPaginationChange($event)"></cm-table>
     </mat-drawer-content>
 
 </mat-drawer-container>

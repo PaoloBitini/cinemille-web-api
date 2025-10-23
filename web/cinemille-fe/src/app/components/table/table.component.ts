@@ -6,11 +6,11 @@ import { PageRequest } from '../../models/pageRequest';
 
 @Component({
   standalone: false,
-  selector: 'cm-filtered-table',
-  templateUrl: './filtered-table.component.html',
-  styleUrl: './filtered-table.component.scss',
+  selector: 'cm-table',
+  templateUrl: './table.component.html',
+  styleUrl: './table.component.scss',
 })
-export class FilteredTableComponent {
+export class TableComponent {
 
   @Input() columnToExclude: string[] = []
   @Input() set data(page: Page<any>) {

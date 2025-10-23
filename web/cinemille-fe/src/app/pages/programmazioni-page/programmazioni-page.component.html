@@ -77,8 +77,8 @@
                 </button>
             </div>
         </cm-toolbar>
-        <cm-filtered-table [columnToExclude]="columnToExclude" [data]="data"
-            (paginationChanged)="onPaginationChanges($event)"></cm-filtered-table>
+        <cm-table [columnToExclude]="columnToExclude" [data]="data"
+            (paginationChanged)="onPaginationChanges($event)"></cm-table>
     </mat-drawer-content>
 
 </mat-drawer-container>
