@@ -1,0 +1,84 @@
+<mat-drawer-container>
+
+    <!--**************** FILTRI *****************-->
+    <mat-drawer [opened]="filterOpened" mode="over" position="end">
+        <div class="container p-0">
+            <form [formGroup]="form" class="row m-0 mt-4">
+
+                <!-- Titolo -->
+                <mat-form-field appearance="fill" class="col-11">
+                    <mat-label>Titolo</mat-label>
+                    <input matInput type="text" formControlName="titolo" />
+                </mat-form-field>
+
+                <!-- Regista -->
+                <mat-form-field appearance="fill" class="col-11">
+                    <mat-label>Regista</mat-label>
+                    <input matInput type="text" formControlName="regista" />
+                </mat-form-field>
+
+                <!-- Genere -->
+                <mat-form-field appearance="fill" class="col-11">
+                    <mat-label>Genere</mat-label>
+                    <input matInput type="text" formControlName="genere" />
+                </mat-form-field>
+
+                <!-- Sala -->
+                <mat-form-field appearance="fill" class="col-11">
+                    <mat-label>Sala</mat-label>
+                    <input matInput type="text" maxlength="1" formControlName="sala" />
+                </mat-form-field>
+
+                <!-- Da A Data Proiezione -->
+                <mat-form-field class="col-11 mb-2">
+                    <mat-label>Data Proiezione</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                        <input matStartDate placeholder="Da" formControlName="daProiezione">
+                        <input matEndDate placeholder="A" formControlName="aProiezione">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                    @if (isDataProiezioneValid()) {
+                    <mat-error>Data Invalida</mat-error>
+                    }
+                </mat-form-field>
+
+                <button class="col-4 offset-1" matButton="outlined" (click)="deleteFilters()">
+                    <mat-icon>
+                        delete
+                    </mat-icon>
+                    Cancella
+                </button>
+                <button class="col-4 ms-3" matButton="outlined" (click)="onFilterChanges()" [disabled]="disabledSearch">
+                    <mat-icon>
+                        search
+                    </mat-icon>
+                    Cerca
+                </button>
+            </form>
+        </div>
+    </mat-drawer>
+
+    <!--**************** TABELLA E BOTTONE FILTRO *****************-->
+    <mat-drawer-content>
+        <cm-toolbar title="Storico e Programmazioni">
+            <div class="ms-4 row" ngProjectAs="toolbar-buttons">
+                <button matButton="filled" class="col-5 button" (click)="loadAllData()">
+                    <mat-icon>
+                        search
+                    </mat-icon>
+                    Tutti
+                </button>
+                <button matButton="outlined" class="col-5 ms-3 button" (click)="filterOpened=!filterOpened">
+                    <mat-icon>
+                        filter
+                    </mat-icon>
+                    Filtri
+                </button>
+            </div>
+        </cm-toolbar>
+        <cm-filtered-table [columnToExclude]="columnToExclude" [data]="data"
+            (paginationChanged)="onPaginationChanges($event)"></cm-filtered-table>
+    </mat-drawer-content>
+
+</mat-drawer-container>
